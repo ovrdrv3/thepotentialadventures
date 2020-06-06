@@ -1,7 +1,7 @@
 <template>
   <div>
     <nuxt />
-    <footer-prismic/>
+    <footer-prismic />
   </div>
 </template>
 
@@ -10,12 +10,12 @@ import FooterPrismic from '~/components/FooterPrismic.vue'
 
 export default {
   components: {
-    FooterPrismic
+    FooterPrismic,
   },
-  head () {
+  head() {
     return {
-      title: 'Prismic Nuxt.js Blog',
+      title: 'The Potential Adventures Blog',
     }
-  }
+  },
 }
 </script>

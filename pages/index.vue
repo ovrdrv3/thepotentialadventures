@@ -1,20 +1,30 @@
 <template>
   <section class="home">
     <article>
-      <div class="blog-avatar" :style="{ backgroundImage: 'url(' + image + ')' }" ></div>
+      <div
+        class="blog-avatar"
+        :style="{ backgroundImage: 'url(' + image + ')' }"
+      ></div>
       <!-- Template for page title -->
       <h1 class="blog-title">
         {{ $prismic.asText(homepageContent.headline) }}
       </h1>
       <!-- Template for page description -->
-      <p class="blog-description">{{ $prismic.asText(homepageContent.description) }}</p>
-      
+      <p class="blog-description">
+        {{ $prismic.asText(homepageContent.description) }}
+      </p>
+
       <!-- Check blog posts exist -->
       <div v-if="posts.length !== 0" class="blog-main">
         <!-- Template for blog posts -->
-        <section v-for="post in posts" :key="post.id" v-bind:post="post" class="blog-post">
+        <section
+          v-for="post in posts"
+          :key="post.id"
+          :post="post"
+          class="blog-post"
+        >
           <!-- Here :post="post" passes the data to the component -->
-          <blog-widget :post="post"></blog-widget>
+          <blog-widget :post="post"> </blog-widget>
         </section>
       </div>
       <!-- If no blog posts return message -->
@@ -32,22 +42,17 @@ import BlogWidget from '~/components/BlogWidget.vue'
 export default {
   name: 'Home',
   components: {
-    BlogWidget
-  },
-  head () {
-    return {
-      title: 'Prismic Nuxt.js Blog',
-    }
+    BlogWidget,
   },
   async asyncData({ $prismic, error }) {
-    try{
+    try {
       // Query to get blog home content
       const homepageContent = (await $prismic.api.getSingle('blog_home')).data
 
       // Query to get posts content to preview
       const blogPosts = await $prismic.api.query(
-        $prismic.predicates.at("document.type", "post"),
-        { orderings : '[my.post.date desc]' }
+        $prismic.predicates.at('document.type', 'post'),
+        { orderings: '[my.post.date desc]' }
       )
 
       // Returns data to be used in template
@@ -59,6 +64,11 @@ export default {
     } catch (e) {
       // Returns error page
       error({ statusCode: 404, message: 'Page not found' })
+    }
+  },
+  head() {
+    return {
+      title: 'The Potential Adventures Blog',
     }
   },
 }

@@ -7,29 +7,26 @@
       <!-- Template for page title -->
       <h1 class="blog-title">{{ $prismic.asText(document.title) }}</h1>
       <!-- Template for published date -->
-      <p class="blog-post-meta"><span class="created-at">{{ formattedDate }}</span></p>
+      <p class="blog-post-meta">
+        <span class="created-at">{{ formattedDate }}</span>
+      </p>
     </div>
     <!-- Slice Block Componenet tag -->
-    <slices-block :slices="slices"/>
+    <slices-block :slices="slices" />
   </div>
 </template>
 
 <script>
-//Importing all the slices components
+// Importing all the slices components
 import SlicesBlock from '~/components/SlicesBlock.vue'
 
 export default {
-  name: 'post',
+  name: 'Post',
   components: {
-    SlicesBlock
-  },
-  head () {
-    return {
-      title: 'Prismic Nuxt.js Blog'
-    }
+    SlicesBlock,
   },
   async asyncData({ $prismic, params, error }) {
-    try{
+    try {
       // Query to get post content
       const post = (await $prismic.api.getByUID('post', params.uid)).data
 
@@ -37,13 +34,21 @@ export default {
       return {
         document: post,
         slices: post.body,
-        formattedDate: Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(post.date)),
+        formattedDate: Intl.DateTimeFormat('en-US', {
+          year: 'numeric',
+          month: 'short',
+          day: '2-digit',
+        }).format(new Date(post.date)),
       }
     } catch (e) {
       // Returns error page
       error({ statusCode: 404, message: 'Page not found' })
     }
   },
-
+  head() {
+    return {
+      title: this.document.title,
+    }
+  },
 }
 </script>

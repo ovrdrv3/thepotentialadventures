@@ -17,6 +17,7 @@ body {
   line-height: 1.5;
   font-family: 'PT Serif', serif;
   font-size: 20px;
+  background-color: lightblue;
 }
 .outer-container {
   max-width: 700px;
