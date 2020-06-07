@@ -1,48 +1,79 @@
 <template>
-  <section class="home">
-    <article>
-      <div
-        class="blog-avatar"
-        :style="{ backgroundImage: 'url(' + image + ')' }"
-      ></div>
-      <!-- Template for page title -->
-      <h1 class="blog-title">
-        {{ $prismic.asText(homepageContent.headline) }}
-      </h1>
-      <!-- Template for page description -->
-      <p class="blog-description">
-        {{ $prismic.asText(homepageContent.description) }}
-      </p>
+  <b-container>
+    <section class="home">
+      <article>
+        <!-- top header -->
+        <div class="p-5">
+          <!-- Template for page title -->
+          <h1 class="blog-title contrast-font">
+            {{ $prismic.asText(homepageContent.headline) }}
+          </h1>
+          <!-- Template for page description -->
+          <p class="blog-description">
+            {{ $prismic.asText(homepageContent.description) }}
+          </p>
+        </div>
+        <b-row>
+          <!-- left side -->
+          <b-col sm="8">
+            <!-- Check blog posts exist -->
+            <div v-if="posts.length !== 0" class="blog-main">
+              <!-- Template for blog posts -->
+              <section
+                v-for="post in posts"
+                :key="post.id"
+                :post="post"
+                class="blog-post"
+              >
+                <!-- Here :post="post" passes the data to the component -->
+                <blog-widget :post="post"> </blog-widget>
+              </section>
+            </div>
+            <!-- If no blog posts return message -->
+            <div v-else class="blog-main">
+              <p>No Posts published at this time.</p>
+            </div>
+          </b-col>
 
-      <!-- Check blog posts exist -->
-      <div v-if="posts.length !== 0" class="blog-main">
-        <!-- Template for blog posts -->
-        <section
-          v-for="post in posts"
-          :key="post.id"
-          :post="post"
-          class="blog-post"
-        >
-          <!-- Here :post="post" passes the data to the component -->
-          <blog-widget :post="post"> </blog-widget>
-        </section>
-      </div>
-      <!-- If no blog posts return message -->
-      <div v-else class="blog-main">
-        <p>No Posts published at this time.</p>
-      </div>
-    </article>
-  </section>
+          <!-- right side -->
+          <b-col sm="4">
+            <div
+              class="blog-avatar"
+              :style="{ backgroundImage: 'url(' + image + ')' }"
+            ></div>
+            <h4 class="blog-description">
+              {{ $prismic.asText(homepageContent.short_blog_description) }}
+            </h4>
+            <hr />
+            (social media section)
+            <hr />
+            <search-widget></search-widget>
+            <hr />
+            <br />
+            <br />
+            <br />
+            <br />
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
+            assumenda itaque quae odio impedit. Doloremque cupiditate recusandae
+            dolorem eligendi, repudiandae nam voluptatum voluptas, suscipit
+            harum incidunt cumque laborum deserunt dolor!
+          </b-col>
+        </b-row>
+      </article>
+    </section>
+  </b-container>
 </template>
 
 <script>
 // Importing blog posts widget
 import BlogWidget from '~/components/BlogWidget.vue'
+import SearchWidget from '~/components/SearchWidget.vue'
 
 export default {
   name: 'Home',
   components: {
     BlogWidget,
+    SearchWidget,
   },
   async asyncData({ $prismic, error }) {
     try {
@@ -66,6 +97,11 @@ export default {
       error({ statusCode: 404, message: 'Page not found' })
     }
   },
+  data() {
+    return {
+      searchQuery: null,
+    }
+  },
   head() {
     return {
       title: 'The Potential Adventures Blog',
@@ -76,24 +112,18 @@ export default {
 
 <style lang="sass" scoped>
 .home
-  max-width: 700px
-  margin: auto
   text-align: center
   .blog-avatar
-    height: 140px
-    width: 140px
+    height: 280px
+    width: 280px
     border-radius: 50%
     background-position: center
     background-size: cover
     margin: 1em auto
   .blog-description
-    font-size: 18px
+    font-size: 20px
     color: #9A9A9A
     line-height: 30px
-    margin-bottom: 3rem
-    padding-bottom: 3rem
-    font-family: 'Lato', sans-serif
-    border-bottom: 1px solid #DADADA
 
 .blog-main
   max-width: 700px
