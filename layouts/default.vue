@@ -39,7 +39,16 @@ export default {
 </script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Open+Sans+Condensed:wght@300&display=swap');
-
+html,
+body {
+  line-height: 1.5;
+  font-size: 20px;
+  font-family: 'Open Sans Condensed', sans-serif !important;
+  background-color: lightblue;
+}
+.contrast-font {
+  font-family: 'Amatic SC' !important;
+}
 .nav-link:hover,
 .nuxt-link-active,
 .navbar-brand:hover,

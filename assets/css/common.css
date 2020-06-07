@@ -15,11 +15,7 @@ html,
 body {
   line-height: 1.5;
   font-size: 20px;
-  font-family: 'Open Sans Condensed', sans-serif !important;
   background-color: lightblue;
-}
-.contrast-font{
-    font-family: 'Amatic SC' !important;
 }
 
 .light-blue {
