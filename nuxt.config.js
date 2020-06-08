@@ -32,7 +32,11 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['@/assets/css/resetr.css', '@/assets/css/common.css'],
+  css: [
+    '@/assets/css/resetr.css',
+    '@/assets/css/common.css',
+    '@/assets/css/google-fonts.css',
+  ],
 
   /*
    ** Plugins to load before mounting the App
@@ -67,6 +71,8 @@ export default {
       config.resolve.alias.vue = 'vue/dist/vue.common'
     },
   },
+
+  buildModules: ['@nuxtjs/pwa'],
 
   generate: {
     fallback: '404.html', // Netlify reads a 404.html, Nuxt will load as an SPA

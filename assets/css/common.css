@@ -16,6 +16,11 @@ body {
   line-height: 1.5;
   font-size: 20px;
   background-color: lightblue;
+  font-family: 'Open Sans Condensed', sans-serif !important;
+}
+
+.contrast-font {
+  font-family: 'Amatic SC' !important;
 }
 
 .light-blue {
