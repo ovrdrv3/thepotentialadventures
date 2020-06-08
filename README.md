@@ -1,4 +1,9 @@
 # thepotentialadventures
+
+thepotentialadventures.com
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d0b94b23-a705-4b40-800a-e214d51ea13b/deploy-status)](https://app.netlify.com/sites/thepotentialadventures/deploys)
+
 nuxtjs blog site utilizing prismic API + prismic blog scaffolding
 
 # Prismic Nuxt.js Example Blog
