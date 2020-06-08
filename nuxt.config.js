@@ -61,11 +61,11 @@ export default {
           {
             set: '@fortawesome/free-solid-svg-icons',
             // fas means import everything with fas prefix.
-            icons: ['fas'],
+            icons: ['faEnvelope'],
           },
           {
             set: '@fortawesome/free-brands-svg-icons',
-            icons: ['fab'],
+            icons: ['faFacebook', 'faInstagram', 'faTwitter', 'faPinterest'],
           },
         ],
       },
