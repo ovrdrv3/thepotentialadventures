@@ -15,6 +15,7 @@
       <b-button
         v-for="result in searchResults.results"
         :key="result.id"
+        variant="light"
         class="my-3 p-0 contrast-font search-result"
         block
         :to="'/blog/' + result.uid"

@@ -12,12 +12,17 @@
     "heroku-postbuild": "npm run build"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.28",
+    "@fortawesome/free-brands-svg-icons": "^5.13.0",
+    "@fortawesome/free-solid-svg-icons": "^5.13.0",
+    "@fortawesome/vue-fontawesome": "^0.1.9",
     "@nuxtjs/prismic": "^1.2.1",
     "bootstrap-vue": "^2.15.0",
     "cookies": "^0.8.0",
     "cross-env": "^5.2.1",
     "medium-zoom": "^1.0.5",
     "nuxt": "^2.12.2",
+    "nuxt-fontawesome": "^0.4.0",
     "prismic-javascript": "^2.7.1",
     "prismic-vue": "^2.0.1"
   },

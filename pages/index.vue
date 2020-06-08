@@ -44,19 +44,51 @@
             <h4 class="blog-description">
               {{ $prismic.asText(homepageContent.short_blog_description) }}
             </h4>
+            <div class="d-flex justify-content-around">
+              <!-- <fa
+                class="icon-dynamic"
+                :icon="['fab', 'facebook']"
+                size="lg"
+                :style="{ color: 'white' }"
+              /> -->
+              <a :href="homepageContent.instagram_link.url">
+                <fa
+                  class="icon-dynamic"
+                  :icon="['fab', 'instagram']"
+                  size="lg"
+                  :style="{ color: 'white' }"
+                />
+              </a>
+              <a :href="homepageContent.twitter_link.url">
+                <fa
+                  class="icon-dynamic"
+                  :icon="['fab', 'twitter']"
+                  size="lg"
+                  :style="{ color: 'white' }"
+                />
+              </a>
+              <a :href="homepageContent.pinterest_link.url">
+                <fa
+                  class="icon-dynamic"
+                  :icon="['fab', 'pinterest']"
+                  size="lg"
+                  :style="{ color: 'white' }"
+                />
+              </a>
+              <a :href="homepageContent.email_address.url">
+                <fa
+                  class="icon-dynamic"
+                  :icon="['fas', 'envelope']"
+                  size="lg"
+                  :style="{ color: 'white' }"
+                />
+              </a>
+            </div>
             <hr />
-            (social media section)
-            <hr />
-            <search-widget></search-widget>
-            <hr />
+            <search-widget />
             <br />
             <br />
             <br />
-            <br />
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
-            assumenda itaque quae odio impedit. Doloremque cupiditate recusandae
-            dolorem eligendi, repudiandae nam voluptatum voluptas, suscipit
-            harum incidunt cumque laborum deserunt dolor!
           </b-col>
         </b-row>
       </article>

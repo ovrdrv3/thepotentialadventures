@@ -53,6 +53,23 @@ export default {
     // https://prismic-nuxt.js.org/
     '@nuxtjs/prismic',
     'bootstrap-vue/nuxt',
+    [
+      'nuxt-fontawesome',
+      {
+        component: 'fa',
+        imports: [
+          {
+            set: '@fortawesome/free-solid-svg-icons',
+            // fas means import everything with fas prefix.
+            icons: ['fas'],
+          },
+          {
+            set: '@fortawesome/free-brands-svg-icons',
+            icons: ['fab'],
+          },
+        ],
+      },
+    ],
   ],
   prismic: {
     endpoint: 'https://thepotentialadventures.cdn.prismic.io/api/v2',
