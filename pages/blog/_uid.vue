@@ -1,19 +1,19 @@
 <template>
-  <div>
-    <div class="outer-container">
-      <div class="back">
-        <nuxt-link to="../">back to list</nuxt-link>
-      </div>
-      <!-- Template for page title -->
-      <h1 class="blog-title">{{ $prismic.asText(document.title) }}</h1>
-      <!-- Template for published date -->
-      <p class="blog-post-meta">
-        <span class="created-at">{{ formattedDate }}</span>
-      </p>
-    </div>
+  <b-container>
+    <!-- <div class="back">
+      <nuxt-link to="../">back to list</nuxt-link>
+    </div> -->
+    <!-- Template for page title -->
+    <h1 class="blog-title p-4 contrast-font">
+      {{ $prismic.asText(document.title) }}
+    </h1>
+    <!-- Template for published date -->
+    <p class="blog-post-meta">
+      <span class="created-at">{{ formattedDate }}</span>
+    </p>
     <!-- Slice Block Componenet tag -->
     <slices-block :slices="slices" />
-  </div>
+  </b-container>
 </template>
 
 <script>
@@ -47,7 +47,7 @@ export default {
   },
   head() {
     return {
-      title: this.document.title,
+      title: 'Post: ' + this.$prismic.asText(this.document.title),
     }
   },
 }

@@ -3,7 +3,7 @@
     <section class="home">
       <article>
         <!-- top header -->
-        <div class="p-5">
+        <div class="p-4">
           <!-- Template for page title -->
           <h1 class="blog-title contrast-font">
             {{ $prismic.asText(homepageContent.headline) }}
