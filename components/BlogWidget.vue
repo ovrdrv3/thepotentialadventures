@@ -10,11 +10,7 @@
     </p>
     <p>{{ getFirstParagraph(post) }}</p>
     <div class="text-center">
-      <b-button
-        :to="link"
-        class="mx-auto contrast-font p-0 m-0"
-        style="width: 400px;"
-      >
+      <b-button :to="link" class="mx-auto contrast-font p-0 m-0" block>
         READ MORE
       </b-button>
     </div>
