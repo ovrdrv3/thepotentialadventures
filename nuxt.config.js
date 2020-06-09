@@ -41,7 +41,7 @@ export default {
   /*
    ** Plugins to load before mounting the App
    */
-  plugins: ['~/plugins/medium-zoom'],
+  plugins: ['~/plugins/medium-zoom', { src: '~plugins/ga.js', mode: 'client' }],
 
   /*
    ** Nuxt.js modules
@@ -68,6 +68,13 @@ export default {
             icons: ['faFacebook', 'faInstagram', 'faTwitter', 'faPinterest'],
           },
         ],
+      },
+    ],
+    // Simple usage
+    [
+      '@nuxtjs/google-adsense',
+      {
+        id: 'ca-pub-6973891532224000',
       },
     ],
   ],

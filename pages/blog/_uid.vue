@@ -11,8 +11,10 @@
     <p class="blog-post-meta">
       <span class="created-at">{{ formattedDate }}</span>
     </p>
+    <adsbygoogle />
     <!-- Slice Block Componenet tag -->
     <slices-block :slices="slices" />
+    <adsbygoogle />
   </b-container>
 </template>
 
