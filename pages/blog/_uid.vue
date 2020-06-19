@@ -75,6 +75,11 @@ export default {
           name: 'og:title',
           content: this.$prismic.asText(this.document.title),
         },
+        {
+          hid: 'og:image',
+          name: 'og:image',
+          content: this.$prismic.asText(this.document.splash_image.url),
+        },
       ],
     }
   },
