@@ -5,13 +5,9 @@
         <!-- top header -->
         <div class="p-4">
           <!-- Template for page title -->
-          <h1 class="blog-title contrast-font">
-            {{ $prismic.asText(homepageContent.headline) }}
-          </h1>
+          <h1 class="blog-title contrast-font">{{ $prismic.asText(homepageContent.headline) }}</h1>
           <!-- Template for page description -->
-          <p class="blog-description">
-            {{ $prismic.asText(homepageContent.description) }}
-          </p>
+          <p class="blog-description">{{ $prismic.asText(homepageContent.description) }}</p>
         </div>
         <b-row>
           <!-- left side -->
@@ -19,14 +15,9 @@
             <!-- Check blog posts exist -->
             <div v-if="posts.length !== 0" class="blog-main">
               <!-- Template for blog posts -->
-              <section
-                v-for="post in posts"
-                :key="post.id"
-                :post="post"
-                class="blog-post"
-              >
+              <section v-for="post in posts" :key="post.id" :post="post" class="blog-post">
                 <!-- Here :post="post" passes the data to the component -->
-                <blog-widget :post="post"> </blog-widget>
+                <blog-widget :post="post"></blog-widget>
               </section>
             </div>
             <!-- If no blog posts return message -->
@@ -37,20 +28,17 @@
 
           <!-- right side -->
           <b-col sm="4">
-            <div
-              class="blog-avatar"
-              :style="{ backgroundImage: 'url(' + image + ')' }"
-            ></div>
-            <h4 class="blog-description">
-              {{ $prismic.asText(homepageContent.short_blog_description) }}
-            </h4>
+            <div class="blog-avatar" :style="{ backgroundImage: 'url(' + image + ')' }"></div>
+            <h4
+              class="blog-description"
+            >{{ $prismic.asText(homepageContent.short_blog_description) }}</h4>
             <div class="d-flex justify-content-around">
               <!-- <fa
                 class="icon-dynamic"
                 :icon="['fab', 'facebook']"
                 size="lg"
                 :style="{ color: 'white' }"
-              /> -->
+              />-->
               <a :href="homepageContent.instagram_link.url">
                 <fa
                   class="icon-dynamic"
@@ -115,7 +103,7 @@ export default {
       // Query to get posts content to preview
       const blogPosts = await $prismic.api.query(
         $prismic.predicates.at('document.type', 'post'),
-        { orderings: '[my.post.date desc]' }
+        { orderings: '[my.post.first_publication_date desc]' }
       )
 
       // Returns data to be used in template

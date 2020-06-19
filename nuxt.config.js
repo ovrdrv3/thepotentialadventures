@@ -12,7 +12,8 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: 'Prismic + Nuxt Blog example',
+        content:
+          'The best travel blog ever made. The potentially best travel inspiration you will ever encounter.',
       },
     ],
     link: [
@@ -82,6 +83,7 @@ export default {
     endpoint: 'https://thepotentialadventures.cdn.prismic.io/api/v2',
     linkResolver: '@/plugins/link-resolver',
     htmlSerializer: '@/plugins/html-serializer',
+    preview: '/preview',
   },
 
   /*

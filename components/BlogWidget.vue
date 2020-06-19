@@ -1,23 +1,17 @@
 <template>
   <div class="blog-post">
     <nuxt-link :to="link">
-      <h2 class="text-center contrast-font">
-        {{ $prismic.asText(post.data.title) }}
-      </h2>
+      <h2 class="text-center contrast-font">{{ $prismic.asText(post.data.title) }}</h2>
     </nuxt-link>
     <p class="text-center">
-      <span class="">{{ formattedDate }}</span>
+      <span class>{{ formattedDate }}</span>
     </p>
+    <div v-if="notEmptyObject(post.data.splash_image)" class="text-center">
+      <b-img :src="post.data.splash_image.url" fluid :alt="post.data.splash_image.alt"></b-img>
+    </div>
     <p>{{ getFirstParagraph(post) }}</p>
     <div class="text-center">
-      <b-button
-        :to="link"
-        class="mx-auto contrast-font p-0 m-0"
-        block
-        variant="light"
-      >
-        READ MORE
-      </b-button>
+      <b-button :to="link" class="mx-auto contrast-font p-0 m-0" block variant="light">READ MORE</b-button>
     </div>
   </div>
 </template>
@@ -40,9 +34,12 @@ export default {
         year: 'numeric',
         month: 'short',
         day: '2-digit',
-      }).format(new Date(this.post.data.date)))
+      }).format(new Date(this.post.first_publication_date)))
   },
   methods: {
+    notEmptyObject(object) {
+      return Object.keys(object).length
+    },
     // Function to get the first paragraph of text in a blog post and limit the displayed text at 300 characters
     getFirstParagraph(post) {
       const textLimit = 300
