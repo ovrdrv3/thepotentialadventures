@@ -74,6 +74,8 @@
             </div>
             <hr />
             <search-widget />
+            <hr />
+            <subscribe-form />
             <br />
             <br />
             <br />
@@ -88,12 +90,14 @@
 // Importing blog posts widget
 import BlogWidget from '~/components/BlogWidget.vue'
 import SearchWidget from '~/components/SearchWidget.vue'
+import SubscribeForm from '~/components/SubscribeForm.vue'
 
 export default {
   name: 'Home',
   components: {
     BlogWidget,
     SearchWidget,
+    SubscribeForm
   },
   async asyncData({ $prismic, error }) {
     try {
