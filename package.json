@@ -1,7 +1,7 @@
 {
   "name": "blog-nuxt",
   "version": "1.0.0",
-  "description": "A simple blog for Nuxt and Vue",
+  "description": "The best travel blog ever made. The potentially best travel inspiration you will ever encounter.",
   "author": "Phil Snow",
   "private": true,
   "scripts": {

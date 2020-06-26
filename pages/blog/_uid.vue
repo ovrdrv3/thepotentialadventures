@@ -3,46 +3,202 @@
     <!-- <div class="back">
       <nuxt-link to="../">back to list</nuxt-link>
     </div>-->
-    <!-- Template for page title -->
-    <h1 class="blog-title p-4 contrast-font text-center">{{ $prismic.asText(document.title) }}</h1>
-    <p class="blog-post-meta p-3">
-      <span class="created-at">{{ formattedPostDate }}</span>
-      <span class="created-at float-right">({{ formattedTravelDate }})</span>
-    </p>
-    <div v-if="notEmptyObject(document.splash_image)" class="text-center">
-      <b-img
-        class="zoom splash-img p-3"
-        :src="document.splash_image.url"
-        fluid
-        :alt="document.splash_image.alt"
-      ></b-img>
-      <br />
-    </div>
-    <!-- Template for published date -->
+    <!-- 1 8 3 column layout -->
+    <b-row>
+      <!-- left bar for sharing layout -->
+      <b-col sm="1" order="2" order-sm="1">
+        <br />
+        <p class="contrast-font">
+          Share this post!
+        </p>
+        <a
+          :href="
+            'https://www.facebook.com/sharer/sharer.php?u=' + document.fullURL
+          "
+          target="_blank"
+          rel="noopener"
+        >
+          <fa
+            class="icon-dynamic"
+            :icon="['fab', 'facebook']"
+            size="lg"
+            :style="{ color: 'white' }"
+          />
+        </a>
+        <br />
+        <br />
+        <!-- <a
+          :href="homepageContent.instagram_link.url"
+          target="_blank"
+          rel="noopener"
+        >
+          <fa
+            class="icon-dynamic"
+            :icon="['fab', 'instagram']"
+            size="lg"
+            :style="{ color: 'white' }"
+          />
+        </a>
+        <br />
+        <br /> -->
+        <a
+          :href="
+            'https://twitter.com/intent/tweet?text=' +
+            document.shareText +
+            $prismic.asText(document.title) +
+            '%0D' +
+            document.fullURL
+          "
+          target="_blank"
+          rel="noopener"
+        >
+          <fa
+            class="icon-dynamic"
+            :icon="['fab', 'twitter']"
+            size="lg"
+            :style="{ color: 'white' }"
+          />
+        </a>
+        <br />
+        <br />
+        <a
+          :href="
+            'mailto:?subject=' +
+            $prismic.asText(document.title) +
+            '&body=' +
+            document.shareText +
+            document.fullURL
+          "
+          target="_blank"
+          rel="noopener"
+        >
+          <fa
+            class="icon-dynamic"
+            :icon="['fas', 'envelope']"
+            size="lg"
+            :style="{ color: 'white' }"
+          />
+        </a>
+      </b-col>
+      <b-col sm="8" order="1" order-sm="2">
+        <!-- center layout   -->
+        <!-- Template for page title -->
+        <h1 class="blog-title p-4 contrast-font text-center">
+          {{ $prismic.asText(document.title) }}
+        </h1>
+        <p class="blog-post-meta p-3">
+          <span class="created-at">{{ formattedPostDate }}</span>
+          <span class="created-at float-right"
+            >({{ formattedTravelDate }})</span
+          >
+        </p>
+        <div v-if="notEmptyObject(document.splash_image)" class="text-center">
+          <b-img
+            class="zoom splash-img p-3"
+            :src="document.splash_image.url"
+            fluid
+            :alt="document.splash_image.alt"
+          ></b-img>
+          <br />
+        </div>
+        <!-- Template for published date -->
 
-    <adsbygoogle />
-    <!-- Slice Block Componenet tag -->
-    <slices-block :slices="slices" />
-    <adsbygoogle />
+        <adsbygoogle />
+        <!-- Slice Block Component tag -->
+        <slices-block :slices="slices" />
+        <adsbygoogle />
+      </b-col>
+      <!-- column on right side -->
+      <b-col sm="3" order="3" order-sm="3">
+        <div
+          class="blog-avatar"
+          :style="{
+            backgroundImage: 'url(' + homepageContent.image.url + ')',
+          }"
+        ></div>
+        <h4 class="blog-description">
+          {{ $prismic.asText(homepageContent.short_blog_description) }}
+        </h4>
+        <div class="d-flex justify-content-around">
+          <!-- <fa
+                class="icon-dynamic"
+                :icon="['fab', 'facebook']"
+                size="lg"
+                :style="{ color: 'white' }"
+              />-->
+          <a :href="homepageContent.instagram_link.url">
+            <fa
+              class="icon-dynamic"
+              :icon="['fab', 'instagram']"
+              size="lg"
+              :style="{ color: 'white' }"
+            />
+          </a>
+          <a :href="homepageContent.twitter_link.url">
+            <fa
+              class="icon-dynamic"
+              :icon="['fab', 'twitter']"
+              size="lg"
+              :style="{ color: 'white' }"
+            />
+          </a>
+          <a :href="homepageContent.pinterest_link.url">
+            <fa
+              class="icon-dynamic"
+              :icon="['fab', 'pinterest']"
+              size="lg"
+              :style="{ color: 'white' }"
+            />
+          </a>
+          <a :href="homepageContent.email_address.url">
+            <fa
+              class="icon-dynamic"
+              :icon="['fas', 'envelope']"
+              size="lg"
+              :style="{ color: 'white' }"
+            />
+          </a>
+        </div>
+        <hr />
+        <search-widget />
+        <hr />
+        <subscribe-form />
+        <br />
+        <br />
+        <br />
+        <adsbygoogle />
+      </b-col>
+    </b-row>
   </b-container>
 </template>
 
 <script>
 // Importing all the slices components
 import SlicesBlock from '~/components/SlicesBlock.vue'
+import SearchWidget from '~/components/SearchWidget.vue'
+import SubscribeForm from '~/components/SubscribeForm.vue'
 
 export default {
   name: 'Post',
   components: {
     SlicesBlock,
+    SearchWidget,
+    SubscribeForm,
   },
   async asyncData({ $prismic, params, error }) {
     try {
+      // Query to get blog home content
+      const homepageContent = (await $prismic.api.getSingle('blog_home')).data
+
       // Query to get post content
       const allData = await $prismic.api.getByUID('post', params.uid)
       const post = allData.data
+      post.fullURL = 'https://www.thepotentialadventures.com/blog/' + params.uid
+      post.shareText =
+        '%0D%0DI%20just%20read%20the%20potentially%20best%20post%20ever:%0D'
       // Returns data to be used in template
       return {
+        homepageContent,
         document: post,
         slices: post.body,
         formattedTravelDate: Intl.DateTimeFormat('en-US', {

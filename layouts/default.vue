@@ -37,7 +37,20 @@ export default {
   },
 }
 </script>
-<style>
+<style lang="sass" sco>
+
+.blog-avatar
+  height: 280px
+  width: 280px
+  border-radius: 50%
+  background-position: center
+  background-size: cover
+  margin: 1em auto
+.blog-description
+  font-size: 20px
+  color: #9A9A9A
+  line-height: 30px
+
 .nav-link:hover,
 .nuxt-link-active,
 .navbar-brand:hover,
@@ -45,7 +58,6 @@ export default {
 .btn-primary:focus,
 .btn-primary:active,
 .btn-primary.active,
-.open > .dropdown-toggle.btn-primary {
-  color: lightblue !important;
-}
+.open > .dropdown-toggle.btn-primary
+  color: lightblue !important
 </style>

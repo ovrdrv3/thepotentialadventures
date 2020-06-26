@@ -5,17 +5,26 @@
         <!-- top header -->
         <div class="p-4">
           <!-- Template for page title -->
-          <h1 class="blog-title contrast-font">{{ $prismic.asText(homepageContent.headline) }}</h1>
+          <h1 class="blog-title contrast-font">
+            {{ $prismic.asText(homepageContent.headline) }}
+          </h1>
           <!-- Template for page description -->
-          <p class="blog-description">{{ $prismic.asText(homepageContent.description) }}</p>
+          <p class="blog-description">
+            {{ $prismic.asText(homepageContent.description) }}
+          </p>
         </div>
         <b-row>
           <!-- left side -->
-          <b-col sm="8">
+          <b-col sm="9">
             <!-- Check blog posts exist -->
             <div v-if="posts.length !== 0" class="blog-main">
               <!-- Template for blog posts -->
-              <section v-for="post in posts" :key="post.id" :post="post" class="blog-post">
+              <section
+                v-for="post in posts"
+                :key="post.id"
+                :post="post"
+                class="blog-post"
+              >
                 <!-- Here :post="post" passes the data to the component -->
                 <blog-widget :post="post"></blog-widget>
               </section>
@@ -27,11 +36,16 @@
           </b-col>
 
           <!-- right side -->
-          <b-col sm="4">
-            <div class="blog-avatar" :style="{ backgroundImage: 'url(' + image + ')' }"></div>
-            <h4
-              class="blog-description"
-            >{{ $prismic.asText(homepageContent.short_blog_description) }}</h4>
+          <b-col sm="3">
+            <div
+              class="blog-avatar"
+              :style="{
+                backgroundImage: 'url(' + homepageContent.image.url + ')',
+              }"
+            ></div>
+            <h4 class="blog-description">
+              {{ $prismic.asText(homepageContent.short_blog_description) }}
+            </h4>
             <div class="d-flex justify-content-around">
               <!-- <fa
                 class="icon-dynamic"
@@ -97,7 +111,7 @@ export default {
   components: {
     BlogWidget,
     SearchWidget,
-    SubscribeForm
+    SubscribeForm,
   },
   async asyncData({ $prismic, error }) {
     try {
@@ -114,7 +128,6 @@ export default {
       return {
         homepageContent,
         posts: blogPosts.results,
-        image: homepageContent.image.url,
       }
     } catch (e) {
       // Returns error page
@@ -137,17 +150,6 @@ export default {
 <style lang="sass" scoped>
 .home
   text-align: center
-  .blog-avatar
-    height: 280px
-    width: 280px
-    border-radius: 50%
-    background-position: center
-    background-size: cover
-    margin: 1em auto
-  .blog-description
-    font-size: 20px
-    color: #9A9A9A
-    line-height: 30px
 
 .blog-main
   max-width: 700px
