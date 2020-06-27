@@ -37,59 +37,7 @@
 
           <!-- right side -->
           <b-col sm="3">
-            <div
-              class="blog-avatar"
-              :style="{
-                backgroundImage: 'url(' + homepageContent.image.url + ')',
-              }"
-            ></div>
-            <h4 class="blog-description">
-              {{ $prismic.asText(homepageContent.short_blog_description) }}
-            </h4>
-            <div class="d-flex justify-content-around">
-              <!-- <fa
-                class="icon-dynamic"
-                :icon="['fab', 'facebook']"
-                size="lg"
-                :style="{ color: 'white' }"
-              />-->
-              <a :href="homepageContent.instagram_link.url">
-                <fa
-                  class="icon-dynamic"
-                  :icon="['fab', 'instagram']"
-                  size="lg"
-                  :style="{ color: 'white' }"
-                />
-              </a>
-              <a :href="homepageContent.twitter_link.url">
-                <fa
-                  class="icon-dynamic"
-                  :icon="['fab', 'twitter']"
-                  size="lg"
-                  :style="{ color: 'white' }"
-                />
-              </a>
-              <a :href="homepageContent.pinterest_link.url">
-                <fa
-                  class="icon-dynamic"
-                  :icon="['fab', 'pinterest']"
-                  size="lg"
-                  :style="{ color: 'white' }"
-                />
-              </a>
-              <a :href="homepageContent.email_address.url">
-                <fa
-                  class="icon-dynamic"
-                  :icon="['fas', 'envelope']"
-                  size="lg"
-                  :style="{ color: 'white' }"
-                />
-              </a>
-            </div>
-            <hr />
-            <search-widget />
-            <hr />
-            <subscribe-form />
+            <bio-sidebar :homepage-content="homepageContent" />
             <br />
             <br />
             <br />
@@ -103,15 +51,13 @@
 <script>
 // Importing blog posts widget
 import BlogWidget from '~/components/BlogWidget.vue'
-import SearchWidget from '~/components/SearchWidget.vue'
-import SubscribeForm from '~/components/SubscribeForm.vue'
+import BioSidebar from '~/components/BioSidebar.vue'
 
 export default {
   name: 'Home',
   components: {
     BlogWidget,
-    SearchWidget,
-    SubscribeForm,
+    BioSidebar,
   },
   async asyncData({ $prismic, error }) {
     try {
