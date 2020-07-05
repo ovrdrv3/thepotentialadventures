@@ -1,42 +1,13 @@
 <template>
   <div>
     <b-card class="mx-auto m-3 p-0" style="max-width: 20rem;">
-      <b-card-img-lazy
-        class="zoom"
-        :src="img.url"
-        :alt="$prismic.asText(caption)"
-      >
+      <b-card-img-lazy class="zoom" :src="img.url" :alt="img.alt">
       </b-card-img-lazy>
 
-      <b-card-text class="text-center contrast-font">
+      <b-card-text class="text-center contrast-font h4">
         {{ $prismic.asText(caption) }}
       </b-card-text>
     </b-card>
-
-    <!-- <template v-if="size === 'image-full-width'">
-      <div
-        class="blog-header single"
-        :style="{ 'background-image': 'url(' + img.url + ')' }"
-      >
-        <template v-if="$prismic.asText(caption) != ''">
-          <div class="wrapper">
-            <h1>{{ $prismic.asText(caption) }}</h1>
-          </div>
-        </template>
-      </div>
-    </template> -->
-    <!-- <template v-else>
-      <div class="post-part single container">
-        <p class="block-img" :class="size">
-          <prismic-image :field="img" />
-        </p>
-        <template v-if="$prismic.asText(caption) != ''">
-          <p>
-            <span class="image-label">{{ $prismic.asText(caption) }}</span>
-          </p>
-        </template>
-      </div>
-    </template> -->
   </div>
 </template>
 
@@ -48,13 +19,11 @@ export default {
     return {
       img: '',
       caption: '',
-      size: '',
     }
   },
   created() {
-    this.img = this.slice.primary.image
-    this.caption = this.slice.primary.caption
-    this.size = this.slice.slice_label
+    this.img = this.slice.image
+    this.caption = this.slice.caption
   },
 }
 </script>
