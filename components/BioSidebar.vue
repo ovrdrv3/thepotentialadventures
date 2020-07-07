@@ -9,6 +9,7 @@
     <h4 class="blog-description">
       {{ $prismic.asText(homepageContent.short_blog_description) }}
     </h4>
+    <!-- social media section -->
     <div class="d-flex justify-content-around">
       <!-- <fa
                 class="icon-dynamic"

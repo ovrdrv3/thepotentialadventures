@@ -1,40 +1,22 @@
 <template>
-  <div class='post-part single container'>
-    <blockquote class="block-quotation">
-      {{ $prismic.asText(slice.primary.quote) }}
-    </blockquote>
-  </div>
+  <h2 class="text-center contrast-font special-header rounded mx-5 p-2">
+    {{ $prismic.asText(slice.primary.quote) }}
+  </h2>
 </template>
 
 <script>
 export default {
+  name: 'QuoteSlice',
   props: ['slice'],
-  name: 'quote-slice'
 }
 </script>
 
-<style lang="sass" scoped>
-.block-quotation
-  margin-bottom: 2rem
-  display: inline-block
-  font-style: italic
-  font-size: 24px
-  &:before
-    content: "« "
-  &:after
-    content: " »"
-.block-citation
-  display: inline-block
-  font-style: italic
-  border-left: solid #B4B4B4 4px
-  padding-left: 10px
-
-@media screen and (min-width: 975px)
-  .block-quotation
-    width: 130%
-    margin: 0 -15% 2rem -15%
-    font-size: 30px
-    padding: 0
-  .block-citation
-    margin: 20px 0
+<style>
+.special-header:hover {
+  background-color: beige;
+}
+.special-header {
+  background-color: white;
+  /* background-color: red; */
+}
 </style>
