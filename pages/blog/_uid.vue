@@ -6,7 +6,7 @@
     <!-- 1 8 3 column layout -->
     <b-row>
       <!-- left bar for sharing layout -->
-      <b-col sm="1" order="2" order-sm="1" class="sticky-top align-self-start">
+      <b-col sm="1" order="2" order-sm="1" class="align-self-start">
         <br />
         <h4 class="contrast-font">
           Share this post!
@@ -103,7 +103,7 @@
         <adsbygoogle />
       </b-col>
       <!-- column on right side -->
-      <b-col sm="3" order="3" order-sm="3" class="sticky-top align-self-start">
+      <b-col sm="3" order="3" order-sm="3" class="align-self-start">
         <bio-sidebar :homepage-content="homepageContent" />
         <br />
         <br />

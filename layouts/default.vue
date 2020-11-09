@@ -40,8 +40,8 @@ export default {
 <style lang="sass" sco>
 
 .blog-avatar
-  height: 280px
-  width: 280px
+  height: 255px
+  width: 255px
   border-radius: 50%
   background-position: center
   background-size: cover
