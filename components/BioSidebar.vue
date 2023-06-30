@@ -71,4 +71,12 @@ export default {
 }
 </script>
 
-<style lang="sass" scoped></style>
+<style lang="sass" scoped>
+.blog-avatar
+  height: 255px
+  width: 255px
+  border-radius: 50%
+  background-position: center
+  background-size: cover
+  margin: 1em auto
+</style>

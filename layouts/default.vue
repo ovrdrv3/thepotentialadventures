@@ -42,18 +42,10 @@ export default {
   flex-direction: column
   min-height: 100vh
   justify-content: space-between
-.blog-avatar
-  height: 255px
-  width: 255px
-  border-radius: 50%
-  background-position: center
-  background-size: cover
-  margin: 1em auto
 .blog-description
   font-size: 20px
   color: #9A9A9A
   line-height: 30px
-
 .nav-link:hover,
 .nuxt-link-active,
 .navbar-brand:hover,
