@@ -29,6 +29,7 @@
         <b-collapse id="nav-collapse" is-nav right>
           <b-nav-item class="light-blue contrast-font" to="privacy"
             >privacy policy
+          </b-nav-item>
         </b-collapse>
       </b-navbar-nav>
     </b-navbar>
