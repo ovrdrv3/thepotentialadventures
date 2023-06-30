@@ -17,14 +17,14 @@
                 size="lg"
                 :style="{ color: 'white' }"
               />-->
-      <a :href="homepageContent.instagram_link.url">
+      <!-- <a :href="homepageContent.instagram_link.url">
         <fa
           class="icon-dynamic"
           :icon="['fab', 'instagram']"
           size="lg"
           :style="{ color: 'white' }"
         />
-      </a>
+      </a> -->
       <a :href="homepageContent.twitter_link.url">
         <fa
           class="icon-dynamic"
