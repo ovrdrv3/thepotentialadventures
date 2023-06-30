@@ -15,6 +15,10 @@
       <template v-else-if="slice.slice_type === 'image_with_caption'">
         <image-caption-slice :slice="slice.primary"></image-caption-slice>
       </template>
+      <!-- mp4 slice template -->
+      <template v-else-if="slice.slice_type === 'mp4'">
+        <video-slice :slice="slice"></video-slice>
+      </template>
       <!-- Multi Image slice template -->
       <template
         v-else-if="slice.slice_type === 'side_by_side_images_with_caption'"
@@ -32,6 +36,7 @@ const TextSlice = () => import('../components/slices/TextSlice.vue')
 const ImageCaptionSlice = () =>
   import('../components/slices/ImageCaptionSlice.vue')
 const MultiImageSlice = () => import('../components/slices/MultiImageSlice.vue')
+const VideoSlice = () => import('../components/slices/VideoSlice.vue')
 
 export default {
   name: 'SlicesBlock',
@@ -40,6 +45,7 @@ export default {
     TextSlice,
     ImageCaptionSlice,
     MultiImageSlice,
+    VideoSlice,
   },
   props: ['slices'],
 }
