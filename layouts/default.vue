@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="top-level-div">
     <b-navbar type="light" variant="light" class="contrast-font light-blue">
       <b-navbar-nav>
         <b-navbar-brand to="/" class="nav-link" exact
@@ -20,9 +20,8 @@
     <!-- Footer -->
     <b-navbar variant="light">
       <!-- Copyright -->
-      <b-navbar-brand
-        class="footer footer-copyright text-center contrast-font light-blue"
-        >the potential adventures © 2020
+      <b-navbar-brand class="footer footer-copyright text-center contrast-font"
+        >the potential adventures © {{ new Date().getFullYear() }}
       </b-navbar-brand>
     </b-navbar>
   </div>
@@ -37,8 +36,12 @@ export default {
   },
 }
 </script>
-<style lang="sass" sco>
-
+<style lang="sass" scoped>
+.top-level-div
+  display: flex
+  flex-direction: column
+  min-height: 100vh
+  justify-content: space-between
 .blog-avatar
   height: 255px
   width: 255px
