@@ -23,6 +23,14 @@
       <b-navbar-brand class="footer footer-copyright text-center contrast-font"
         >the potential adventures © {{ new Date().getFullYear() }}
       </b-navbar-brand>
+      <b-navbar-nav class="ml-auto">
+        <b-navbar-toggle variant="dark" target="nav-collapse"></b-navbar-toggle>
+
+        <b-collapse id="nav-collapse" is-nav right>
+          <b-nav-item class="light-blue contrast-font" to="privacy"
+            >privacy policy
+        </b-collapse>
+      </b-navbar-nav>
     </b-navbar>
   </div>
 </template>
