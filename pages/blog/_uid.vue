@@ -1,5 +1,5 @@
 <template>
-  <b-container>
+  <b-container class="my-3">
     <!-- <div class="back">
       <nuxt-link to="../">back to list</nuxt-link>
     </div>-->
@@ -74,7 +74,12 @@
           />
         </a>
       </b-col>
-      <b-col sm="8" order="1" order-sm="2">
+      <b-col
+        sm="8"
+        order="1"
+        order-sm="2"
+        class="middle-column-pop my-3 rounded"
+      >
         <!-- center layout   -->
         <!-- Template for page title -->
         <h1 class="blog-title p-4 contrast-font text-center">
@@ -181,3 +186,8 @@ export default {
   },
 }
 </script>
+
+<style lang="sass" scoped>
+.middle-column-pop
+  background-color: #F0F8FF
+</style>

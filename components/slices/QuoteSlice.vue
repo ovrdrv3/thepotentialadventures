@@ -1,5 +1,5 @@
 <template>
-  <h2 class="text-center contrast-font special-header rounded mx-5 p-2">
+  <h2 class="text-center contrast-font special-header rounded mx-5 mb-3 p-2">
     {{ $prismic.asText(slice.primary.quote) }}
   </h2>
 </template>

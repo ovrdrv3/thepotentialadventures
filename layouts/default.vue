@@ -1,6 +1,10 @@
 <template>
   <div class="top-level-div">
-    <b-navbar type="light" variant="light" class="contrast-font light-blue">
+    <b-navbar
+      type="light"
+      variant="light"
+      class="contrast-font light-blue bg-lighter-blue"
+    >
       <b-navbar-nav>
         <b-navbar-brand to="/" class="nav-link" exact
           >the potential adventures
@@ -18,7 +22,7 @@
 
     <nuxt />
     <!-- Footer -->
-    <b-navbar variant="light">
+    <b-navbar variant="light" class="bg-lighter-blue">
       <!-- Copyright -->
       <b-navbar-brand class="footer footer-copyright text-center contrast-font"
         >the potential adventures © {{ new Date().getFullYear() }}
@@ -46,6 +50,8 @@ export default {
 }
 </script>
 <style lang="sass" scoped>
+.bg-lighter-blue
+  background-color: #F0F8FF !important
 .top-level-div
   display: flex
   flex-direction: column
